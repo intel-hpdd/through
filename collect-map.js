@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -21,12 +21,14 @@
 
 'use strict';
 
+var fp = require('@intel-js/fp');
+
 /**
  * Maps values, then collects the results.
  * @param {Function} fn
  * @param {Highland.Stream} s
  * @returns {Highland.Stream} A stream.
  */
-module.exports = function collectMap (fn, s) {
+module.exports = fp.curry(2, function collectMap (fn, s) {
   return s.map(fn).collect();
-};
+});

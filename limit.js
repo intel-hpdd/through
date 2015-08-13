@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -21,7 +21,7 @@
 
 'use strict';
 
-var _ = require('lodash-mixins');
+var fp = require('@intel-js/fp');
 
 /**
  * Determines if any items are truthy in the stream.
@@ -29,7 +29,7 @@ var _ = require('lodash-mixins');
  * @param {Highland.Stream} s
  * @returns {Highland.Stream} A stream.
  */
-module.exports = _.curry(function limit (ms, s) {
+module.exports = fp.curry(2, function limit (ms, s) {
   var underLimit = true;
 
   return s.consume(function (err, x, push, next) {

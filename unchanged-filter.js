@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -21,7 +21,7 @@
 
 'use strict';
 
-var _ = require('lodash-mixins');
+var fp = require('@intel-js/fp');
 
 /**
  * Filters values that are the same as the previous.
@@ -32,7 +32,7 @@ module.exports = function unchangedFilter (s) {
   var cached;
 
   return s.filter(function filterUnchanged (x) {
-    var changed = !_.isEqual(x, cached);
+    var changed = fp.flow(fp.eq(x), fp.not)(cached);
 
     cached = x;
 

@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -21,10 +21,15 @@
 
 'use strict';
 
-var _ = require('lodash-mixins');
+var fp = require('@intel-js/fp');
+var obj = require('@intel-js/obj');
 
-module.exports = _.curry(function pluckValues (arr, s) {
+/**
+ * Plucks the array of values out
+ * of each object in the stream.
+ */
+module.exports = fp.curry(2, function pluckValues (arr, s) {
   return s
     .pick(arr)
-    .map(_.values);
+    .map(obj.values);
 });
