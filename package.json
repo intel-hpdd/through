@@ -1,10 +1,12 @@
 {
   "name": "through",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of through modules for highland",
+  "main": "index.js",
   "author": "IML Team",
   "license": "MIT",
   "scripts": {
+    "test": "JASMINE_CONFIG_PATH=jasmine.json NODE_ENV=test jasmine",
     "jshint": "jshint --c ./.jshintrc --exclude-path ./.jshintignore .",
     "jscs": "jscs ."
   },
@@ -18,12 +20,17 @@
     "url": "https://github.com/intel-js/through.git"
   },
   "dependencies": {
-    "lodash-mixins": "file:../../isomorphic/lodash-mixins",
-    "dirp": "file:../dirp"
+    "@intel-js/dirp": "1.0.0",
+    "highland": "2.5.1",
+    "@intel-js/fp": "1.0.2",
+    "@intel-js/obj": "1.0.2"
   },
   "devDependencies": {
     "jscs": "2.1.0",
     "jshint": "2.8.0",
-    "pre-commit": "1.1.1"
+    "pre-commit": "1.1.1",
+    "jasmine": "2.3.1",
+    "jasmine-n-matchers": "2.0.2",
+    "krusty-jasmine-reporter": "1.0.0"
   }
 }

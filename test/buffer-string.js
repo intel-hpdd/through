@@ -1,15 +1,21 @@
 'use strict';
 
 var λ = require('highland');
-var bufferString = require('../../../request/buffer-string');
+var bufferString = require('../buffer-string');
 
 describe('buffer string', function () {
+  var spy;
+
+  beforeEach(function () {
+    spy = jasmine.createSpy('spy');
+  });
+
   it('should work with a single chunk', function () {
     λ(['foo'])
       .through(bufferString)
-      .each(function (x) {
-        expect(x).toEqual('foo');
-      });
+      .each(spy);
+
+    expect(spy).toHaveBeenCalledOnceWith('foo');
   });
 
   it('should work with multiple chunks', function () {
@@ -20,9 +26,9 @@ describe('buffer string', function () {
       new Buffer('!')
     ])
       .through(bufferString)
-      .each(function (x) {
-        expect(x).toEqual('foo!');
-      });
+      .each(spy);
+
+    expect(spy).toHaveBeenCalledOnceWith('foo!');
   });
 
   it('should not buffer an empty stream', function () {

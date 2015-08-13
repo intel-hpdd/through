@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -21,7 +21,7 @@
 
 'use strict';
 
-var _ = require('lodash-mixins');
+var fp = require('@intel-js/fp');
 
 /**
  * Sorts the stream by the comparator
@@ -29,7 +29,7 @@ var _ = require('lodash-mixins');
  * @param {Highland.Stream} s
  * @returns {Highland.Stream} A stream.
  */
-module.exports = _.curry(function sortBy (cmp, s) {
+module.exports = fp.curry(2, function sortBy (cmp, s) {
   return s.collect()
     .invoke('sort', [cmp])
     .sequence();
