@@ -1,0 +1,29 @@
+{
+  "name": "through",
+  "version": "1.0.0",
+  "description": "A collection of through modules for highland",
+  "author": "IML Team",
+  "license": "MIT",
+  "scripts": {
+    "jshint": "jshint --c ./.jshintrc --exclude-path ./.jshintignore .",
+    "jscs": "jscs ."
+  },
+  "pre-commit": [
+    "jscs",
+    "jshint",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intel-js/through.git"
+  },
+  "dependencies": {
+    "lodash-mixins": "file:../../isomorphic/lodash-mixins",
+    "dirp": "file:../dirp"
+  },
+  "devDependencies": {
+    "jscs": "2.1.0",
+    "jshint": "2.8.0",
+    "pre-commit": "1.1.1"
+  }
+}

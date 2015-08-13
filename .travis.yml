@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 0.12
+  - 0.1
+  - iojs
+before_install:
+  - npm i -g npm@latest
+  - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+before_script:
+  - npm i npm
+env:
+  secure: IsRwWfPnUbwdVtyIwNbhurSAwzlf7kDQXR+RYAb0aRGrEpp2Ix4OSAZaJtv67VdkV5KTJ7S+lPPeLHDXZGd06zHeISjkmW2nsUdugqAtzCGScIJMaD1bdWZkJ7TqWOP/wD8m61qczlRwrvqZ5KMeKqNzQdBXnlNl2CW0eTcRvESclEsu7x6St9e1kUQxVimyQ5ptUYA5rfLZE6JcwninDJCSwP/B3DfXZGDm1sYvKDIPpO+Edypdt6UqQB3QuMlFpcAuZNY2/7lbMxKSeFo1d6c5Chtp9vBJQHl+ksqPrx3vrOVrrZ9gTk2wyhWS9L6yAU3NJfW0aSKPLaoAMEIwxobKkwHKJgacxvLbf24D6ddS4rWssoSojgug6vR9iPIqAbk7esFgs0Q3Iy5llU2oeC7VKvzkGkESoArJoKit5BRK1h1FuMHAt1QmcVm/OyFwleoHZkJhxhHSJAdswqOC7nc5cPbph5j0fyD0xC9PBCZAuTDV3ARUlGv8POmBOm57VoctRhn6caG+9on1rtkMqONCq/GMkSC3UcnNh2Qz3OpF2rO1NgL7tXtmOMbXUqtsebRd4vkPIgLMEsZQkodr3oW4ce2TV8mjbtSJ6Q48ENMX/91rmaVj1KUOhXU9Yy9ixefdIIDVvga+mXdQer0VjKz+IqXpCZXr72XZC2LDAO8=
