@@ -20,7 +20,7 @@
     "url": "https://github.com/intel-js/through.git"
   },
   "dependencies": {
-    "@intel-js/dirp": "1.0.0",
+    "@intel-js/dirp": "1.0.2",
     "highland": "2.5.1",
     "@intel-js/fp": "1.0.2",
     "@intel-js/obj": "1.0.2"
