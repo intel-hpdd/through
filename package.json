@@ -1,6 +1,6 @@
 {
   "name": "@intel-js/through",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A collection of through modules for highland",
   "main": "index.js",
   "author": "IML Team",
@@ -32,5 +32,6 @@
     "jasmine": "2.3.1",
     "jasmine-n-matchers": "2.0.2",
     "krusty-jasmine-reporter": "1.0.0"
-  }
+  },
+  "whitelist": ["jasmine", "jasmine-n-matchers", "krusty-jasmine-reporter"]
 }
