@@ -21,18 +21,13 @@
 
 'use strict';
 
-var fp = require('@intel-js/fp');
+var isEqual = require('lodash.isequal');
 
-/**
- * Filters values that are the same as the previous.
- * @param {Highland.Stream} s
- * @returns {Highland.Stream} A stream.
- */
 module.exports = function unchangedFilter (s) {
   var cached;
 
   return s.filter(function filterUnchanged (x) {
-    var changed = fp.flow(fp.eq(x), fp.not)(cached);
+    var changed = !isEqual(x, cached);
 
     cached = x;
 
