@@ -18,4 +18,32 @@ describe('unchanged filter', function () {
 
     expect(spy).toHaveBeenCalledOnceWith([1,8,6,2,8]);
   });
+
+  it('should deep compare values', function () {
+    λ([
+      {
+        a: 'b',
+        c: {
+          d: 'e'
+        }
+      },
+      {
+        a: 'b',
+        c: {
+          d: 'e'
+        }
+      }])
+      .through(unchangedFilter)
+      .collect()
+      .each(spy);
+
+    expect(spy).toHaveBeenCalledOnceWith([
+      {
+        a: 'b',
+        c: {
+          d: 'e'
+        }
+      }
+    ]);
+  });
 });
