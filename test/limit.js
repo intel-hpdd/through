@@ -2,7 +2,7 @@
 
 var λ = require('highland');
 var limit = require('../limit');
-var fp = require('@intel-js/fp');
+var fp = require('intel-fp');
 
 describe('limit', function () {
   var spy, s;

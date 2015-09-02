@@ -21,7 +21,7 @@
 
 'use strict';
 
-var fp = require('@intel-js/fp');
+var fp = require('intel-fp');
 
 /**
  * Plucks path and then flattens result.

@@ -1,5 +1,5 @@
 {
-  "name": "@intel-js/through",
+  "name": "intel-through",
   "version": "1.0.7",
   "description": "A collection of through modules for highland",
   "main": "index.js",
@@ -17,12 +17,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/intel-js/through.git"
+    "url" : "https://github.intel.com/IML/through.git"
+  },
+  "publishConfig": {
+    "registry": "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-local"
   },
   "dependencies": {
-    "@intel-js/dirp": "1.0.2",
-    "@intel-js/fp": "1.0.2",
-    "@intel-js/obj": "1.0.2",
+    "intel-dirp": "1.0.4",
+    "intel-fp": "1.0.13",
+    "intel-obj": "1.0.4",
     "highland": "2.5.1",
     "lodash.isequal": "3.0.4"
   },

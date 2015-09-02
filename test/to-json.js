@@ -2,7 +2,7 @@
 
 var λ = require('highland');
 var toJson = require('../to-json');
-var fp = require('@intel-js/fp');
+var fp = require('intel-fp');
 var format = require('util').format;
 
 describe('to json', function () {

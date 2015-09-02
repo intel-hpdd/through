@@ -20,6 +20,6 @@
 // express and approved by Intel in writing.
 
 'use strict';
-var dirp = require('@intel-js/dirp');
+var dirp = require('intel-dirp');
 
 module.exports = dirp(__dirname);

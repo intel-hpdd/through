@@ -21,8 +21,8 @@
 
 'use strict';
 
-var fp = require('@intel-js/fp');
-var obj = require('@intel-js/obj');
+var fp = require('intel-fp');
+var obj = require('intel-obj');
 
 /**
  * Plucks the array of values out
