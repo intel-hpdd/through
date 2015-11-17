@@ -1,6 +1,6 @@
 {
   "name": "intel-through",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A collection of through modules for highland",
   "main": "index.js",
   "author": "IML Team",
@@ -23,23 +23,18 @@
     "registry": "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-local"
   },
   "dependencies": {
-    "intel-dirp": "1.0.4",
-    "intel-fp": "1.0.13",
-    "intel-obj": "1.0.4",
+    "intel-dirp": "1.0.5",
+    "intel-fp": "1.0.15",
+    "intel-obj": "1.0.5",
     "highland": "2.5.1",
     "lodash.isequal": "3.0.4"
   },
   "devDependencies": {
-    "jscs": "2.1.0",
+    "jscs": "2.5.1",
     "jshint": "2.8.0",
-    "pre-commit": "1.1.1",
-    "jasmine": "2.3.1",
+    "pre-commit": "1.1.2",
+    "jasmine": "2.3.2",
     "jasmine-n-matchers": "2.0.2",
     "krusty-jasmine-reporter": "1.0.0"
-  },
-  "whitelist": [
-    "jasmine",
-    "jasmine-n-matchers",
-    "krusty-jasmine-reporter"
-  ]
+  }
 }
