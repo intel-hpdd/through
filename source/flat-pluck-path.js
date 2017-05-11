@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,16 +21,16 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import highland from 'highland';
+import { type HighlandStreamT } from 'highland';
 
-const fp = require('intel-fp');
+export default (path: string[]) => (
+  s: HighlandStreamT<Object>
+): HighlandStreamT<Object> =>
+  s.flatMap(x => {
+    const obj = path.reduce((prev, cur) => {
+      return prev[cur];
+    }, x);
 
-/**
- * Plucks path and then flattens result.
- * @param {Array} path
- * @param {Highland.Stream} s
- * @returns {Highland.Stream} A stream.
- */
-module.exports = fp.curry(2, function flatPluckPath(path, s) {
-  return s.flatMap(fp.pathLens(path));
-});
+    return highland(obj);
+  });

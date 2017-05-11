@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,16 +21,7 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import { type HighlandStreamT } from 'highland';
 
-const fp = require('intel-fp');
-
-/**
- * Sorts the stream by the comparator
- * @param {Function} cmp
- * @param {Highland.Stream} s
- * @returns {Highland.Stream} A stream.
- */
-module.exports = fp.curry(2, function sortBy(cmp, s) {
-  return s.collect().invoke('sort', [cmp]).sequence();
-});
+export default (cmp: <T>(a: T, b: T) => number) => <T>(s: HighlandStreamT<T>) =>
+  s.collect().map((x: T[]) => x.sort(cmp)).sequence();

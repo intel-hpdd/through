@@ -1,45 +1,45 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const limit = require('../source/limit');
-const fp = require('intel-fp');
+import highland from 'highland';
+import limit from '../source/limit.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('limit', function() {
-  let spy, s;
-  beforeEach(function() {
+describe('limit', () => {
+  let spy;
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
   it('should rate limit the stream', function(done) {
-    s = λ([1, 2, 3, 4, 5])
+    highland([1, 2, 3, 4, 5])
       .through(limit(20))
       .each(spy)
       .observe()
-      .done(function() {
-        expect(spy).toHaveBeenCalledOnceWith(5);
+      .done(() => {
+        expect(spy).toHaveBeenCalledWith(5);
         done();
       });
   });
 
-  it('should handle errors', function(done) {
+  it('should handle errors', done => {
     const err = new Error('foo error');
-    s = λ(function createStream(push) {
+    highland(push => {
       push(null, 1);
       push(err, 'error');
       push(null, 7);
-      push(null, λ.nil);
+      push(null, highland.nil);
     })
       .through(limit(20))
-      .errors(function(err, push) {
+      .errors((err, push) => {
         spy(err);
         push(null, { foo: 'bar' });
       })
-      .each(fp.noop)
+      .each(() => {})
       .observe()
-      .done(function() {
-        expect(spy).toHaveBeenCalledTwiceWith(err);
+      .done(() => {
+        expect(spy).toHaveBeenCalledWith(err);
+        expect(spy).toHaveBeenCalledTimes(2);
         done();
       });
   });

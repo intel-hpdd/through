@@ -1,20 +1,20 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const some = require('../source/some');
+import highland from 'highland';
+import some from '../source/some.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('some', function() {
+describe('some', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
-  it('should', function() {
-    λ([0, false, NaN, 7, undefined, null]).through(some).each(spy);
+  it('should show if any of the items are truthy', () => {
+    highland([0, false, NaN, 7, undefined, null]).through(some).each(spy);
 
-    expect(spy).toHaveBeenCalledOnceWith(7);
+    expect(spy).toHaveBeenCalledWith(7);
   });
 });

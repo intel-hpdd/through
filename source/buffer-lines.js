@@ -1,7 +1,9 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2015 Intel Corporation All Rights Reserved.
+// Copyright 2013-2017 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -19,10 +21,8 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import bufferString from './buffer-string.js';
+import type { HighlandStreamT } from 'highland';
 
-const bufferString = require('./buffer-string');
-
-module.exports = function bufferLines(s) {
-  return s.through(bufferString).split();
-};
+export default (s: HighlandStreamT<Buffer>): HighlandStreamT<string> =>
+  s.through(bufferString).split();

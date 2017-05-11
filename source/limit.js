@@ -1,7 +1,9 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2015 Intel Corporation All Rights Reserved.
+// Copyright 2013-2017 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -19,43 +21,28 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import highland from 'highland';
+import { type HighlandStreamT } from 'highland';
 
-const fp = require('intel-fp');
-
-/**
- * Determines if any items are truthy in the stream.
- * @param {Number} ms
- * @param {Highland.Stream} s
- * @returns {Highland.Stream} A stream.
- */
-module.exports = fp.curry(2, function limit(ms, s) {
+export default (ms: number) => (s: HighlandStreamT<*>) => {
   let underLimit = true;
 
-  return s.consume(function(err, x, push, next) {
+  return s.consume((err, x, push, next) => {
     if (err) pushNext(err, x);
-    if (x === nil) push(null, nil);
+    if (x === highland.nil) push(null, highland.nil);
     else pushNext(err, x);
 
-    /**
-     * Push token downstream and call next.
-     * If we haven't ratelimited previously then push
-     * immediately and call next.
-     * Otherwise push and call next after limit ms.
-     * @param {Error} err
-     * @param {*} x
-     */
-    function pushNext(err, x) {
+    function pushNext(err: Error, x: mixed): void {
       if (underLimit) {
         underLimit = false;
         push(err, x);
         next();
       } else {
-        setTimeout(function() {
+        setTimeout(() => {
           push(err, x);
           next();
         }, ms);
       }
     }
   });
-});
+};

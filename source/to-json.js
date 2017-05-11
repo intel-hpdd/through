@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,16 +21,13 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import { type HighlandStreamT } from 'highland';
 
-const format = require('util').format;
-
-module.exports = function toJson(s) {
-  return s.map(function convert(x) {
+export default (s: HighlandStreamT<string>) =>
+  s.map(x => {
     try {
       return JSON.parse(x);
     } catch (e) {
-      throw new Error(format('Could not parse %s to JSON.', x));
+      throw new Error(`Could not parse ${x} to JSON.`);
     }
   });
-};

@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,14 +21,13 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import isEqual from 'lodash.isequal';
+import { type HighlandStreamT } from 'highland';
 
-const isEqual = require('lodash.isequal');
-
-module.exports = function unchangedFilter(s) {
+export default (s: HighlandStreamT<mixed>) => {
   let cached;
 
-  return s.filter(function filterUnchanged(x) {
+  return s.filter(x => {
     const changed = !isEqual(x, cached);
 
     cached = x;

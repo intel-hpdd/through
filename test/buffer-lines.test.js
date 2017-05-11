@@ -1,37 +1,36 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const bufferLines = require('../source/buffer-lines');
+import highland from 'highland';
+import bufferLines from '../source/buffer-lines.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('buffer lines', function() {
+describe('buffer lines', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
-  describe('receives a single chunk containing multiple lines', function() {
-    beforeEach(function() {
-      λ(['foo\nbar']).through(bufferLines).each(spy);
+  describe('receives a single chunk containing multiple lines', () => {
+    beforeEach(() => {
+      highland(['foo\nbar']).through(bufferLines).each(spy);
     });
 
-    it('should receive the first line', function() {
+    it('should receive the first line', () => {
       expect(spy).toHaveBeenCalledWith('foo');
-      expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('should receive the second line', function() {
-      expect(spy).toHaveBeenCalledOnceWith('bar');
+    it('should receive the second line', () => {
+      expect(spy).toHaveBeenCalledWith('bar');
     });
   });
 
-  describe('receives multiple chunks containing multiple lines', function() {
-    beforeEach(function() {
+  describe('receives multiple chunks containing multiple lines', () => {
+    beforeEach(() => {
       spy = jasmine.createSpy('spy');
 
-      λ([
+      highland([
         new Buffer('f'),
         new Buffer('o'),
         new Buffer('o'),
@@ -44,18 +43,18 @@ describe('buffer lines', function() {
         .each(spy);
     });
 
-    it('should receive the first line', function() {
-      expect(spy).toHaveBeenCalledOnceWith('foo');
+    it('should receive the first line', () => {
+      expect(spy).toHaveBeenCalledWith('foo');
     });
 
-    it('should receive the second line', function() {
-      expect(spy).toHaveBeenCalledOnceWith('bar');
+    it('should receive the second line', () => {
+      expect(spy).toHaveBeenCalledWith('bar');
     });
   });
 
-  it('should not buffer an empty stream', function() {
-    λ([]).through(bufferLines).each(spy);
+  it('should not buffer an empty stream', () => {
+    highland([]).through(bufferLines).each(spy);
 
-    expect(spy).not.toHaveBeenCalledOnce();
+    expect(spy).not.toHaveBeenCalled();
   });
 });

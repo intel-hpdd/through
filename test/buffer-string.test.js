@@ -1,36 +1,39 @@
-'use strict';
+import highland from 'highland';
+import bufferString from '../source/buffer-string.js';
 
-const λ = require('highland');
-const bufferString = require('../source/buffer-string');
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
-
-describe('buffer string', function() {
+describe('buffer string', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
-  it('should work with a single chunk', function() {
-    λ(['foo']).through(bufferString).each(spy);
+  it('should work with a single chunk', () => {
+    highland(['foo']).through(bufferString).each(spy);
 
-    expect(spy).toHaveBeenCalledOnceWith('foo');
+    expect(spy).toHaveBeenCalledWith('foo');
   });
 
-  it('should work with multiple chunks', function() {
-    λ([new Buffer('f'), new Buffer('o'), new Buffer('o'), new Buffer('!')])
+  it('should work with multiple chunks', () => {
+    highland([
+      new Buffer('f'),
+      new Buffer('o'),
+      new Buffer('o'),
+      new Buffer('!')
+    ])
       .through(bufferString)
       .each(spy);
 
-    expect(spy).toHaveBeenCalledOnceWith('foo!');
+    expect(spy).toHaveBeenCalledWith('foo!');
   });
 
-  it('should not buffer an empty stream', function() {
+  it('should not buffer an empty stream', () => {
     const spy = jasmine.createSpy('spy');
 
-    λ([]).through(bufferString).each(spy);
+    highland([]).through(bufferString).each(spy);
 
-    expect(spy).not.toHaveBeenCalledOnce();
+    expect(spy).not.toHaveBeenCalled();
   });
 });

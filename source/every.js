@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,15 +21,7 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import { type HighlandStreamT } from 'highland';
 
-/**
- * Determines if every item is truthy in the stream.
- * @param {Highland.Stream} s
- * @returns {Highland.Stream} A stream.
- */
-module.exports = function every(s) {
-  return s.reduce1(function(a, b) {
-    return a && b;
-  });
-};
+export default (s: HighlandStreamT<mixed>): HighlandStreamT<mixed> =>
+  s.reduce1((a, b) => a && b);

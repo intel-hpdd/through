@@ -1,9 +1,9 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const flatPluckPath = require('../source/flat-pluck-path');
+import highland from 'highland';
+import flatPluckPath from '../source/flat-pluck-path.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
 describe('flat pluck path', function() {
   let spy;
@@ -12,7 +12,7 @@ describe('flat pluck path', function() {
   });
 
   it('should pluck the path', function() {
-    λ([
+    highland([
       {
         body: {
           objects: [

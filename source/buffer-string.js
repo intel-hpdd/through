@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,13 +21,11 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import collectValues from './collect-values';
+import type { HighlandStreamT } from 'highland';
 
-const collectValues = require('./collect-values');
-
-module.exports = function bufferString(s) {
-  return s
-    .invoke('toString', ['utf8'])
+export default (s: HighlandStreamT<Buffer>): HighlandStreamT<string> =>
+  s
+    .map(x => x.toString('utf8'))
     .through(collectValues)
-    .invoke('join', ['']);
-};
+    .map((x: Array<string>) => x.join(''));

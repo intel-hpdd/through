@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,16 +21,8 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import { type HighlandStreamT } from 'highland';
 
-const fp = require('intel-fp');
-
-/**
- * Maps values, then collects the results.
- * @param {Function} fn
- * @param {Highland.Stream} s
- * @returns {Highland.Stream} A stream.
- */
-module.exports = fp.curry(2, function collectMap(fn, s) {
-  return s.map(fn).collect();
-});
+export default <T>(fn: Function) => (
+  s: HighlandStreamT<T>
+): HighlandStreamT<T[]> => s.map(fn).collect();

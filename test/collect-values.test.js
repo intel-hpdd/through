@@ -1,6 +1,6 @@
 // @flow
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
 import highland from 'highland';
 import collectValues from '../source/collect-values.js';

@@ -1,7 +1,9 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2017 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -19,7 +21,16 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
-const dirp = require('intel-dirp');
-
-module.exports = dirp(__dirname);
+export { default as bufferLines } from './buffer-lines.js';
+export { default as bufferString } from './buffer-string.js';
+export { default as collectMap } from './collect-map.js';
+export { default as collectValues } from './collect-values.js';
+export { default as every } from './every.js';
+export { default as flatPluckPath } from './flat-pluck-path.js';
+export { default as limit } from './limit.js';
+export { default as pluckValues } from './pluck-values.js';
+export { default as some } from './some.js';
+export { default as sortBy } from './sort-by.js';
+export { default as toJson } from './to-json.js';
+export { default as unchangedFilter } from './unchanged-filter.js';
+export { default as zipObject } from './zip-object.js';

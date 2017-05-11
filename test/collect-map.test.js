@@ -1,24 +1,20 @@
-'use strict';
+import highland from 'highland';
+import collectMap from '../source/collect-map.js';
 
-const λ = require('highland');
-const collectMap = require('../source/collect-map');
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+const square = x => x * x;
 
-describe('collect map', function() {
+describe('collect map', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
-  it('should map values and collect the results', function() {
-    λ([1, 2, 3]).through(collectMap(square)).each(spy);
+  it('should map values and collect the results', () => {
+    highland([1, 2, 3]).through(collectMap(square)).each(spy);
 
-    expect(spy).toHaveBeenCalledOnceWith([1, 4, 9]);
+    expect(spy).toHaveBeenCalledWith([1, 4, 9]);
   });
-
-  function square(x) {
-    return x * x;
-  }
 });

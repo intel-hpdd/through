@@ -1,22 +1,22 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const zipObject = require('../source/zip-object');
+import highland from 'highland';
+import zipObject from '../source/zip-object.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('zip object', function() {
+describe('zip object', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
-  it('should zip data into an object', function() {
-    λ(['kia', 'forte', 2010, 'blue'])
+  it('should zip data into an object', () => {
+    highland(['kia', 'forte', 2010, 'blue'])
       .through(zipObject(['make', 'model', 'year', 'color']))
       .each(spy);
-    expect(spy).toHaveBeenCalledOnceWith({
+    expect(spy).toHaveBeenCalledWith({
       make: 'kia',
       model: 'forte',
       year: 2010,

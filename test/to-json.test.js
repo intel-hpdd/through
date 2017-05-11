@@ -1,16 +1,14 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const toJson = require('../source/to-json');
-const fp = require('intel-fp');
-const format = require('util').format;
+import highland from 'highland';
+import toJson from '../source/to-json.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('to json', function() {
+describe('to json', () => {
   let spy, obj, stringifiedObj;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
     obj = {
       foo: {
@@ -22,23 +20,27 @@ describe('to json', function() {
     stringifiedObj = JSON.stringify(obj);
   });
 
-  it('should convert JSON data to an object', function() {
-    λ([stringifiedObj]).through(toJson).each(spy);
+  it('should convert JSON data to an object', () => {
+    highland([stringifiedObj]).through(toJson).each(spy);
 
-    expect(spy).toHaveBeenCalledOnceWith(obj);
+    expect(spy).toHaveBeenCalledWith(obj);
   });
 
-  it('should throw an error if the object passed cannot be parsed', function() {
-    λ(['[' + stringifiedObj])
+  it('should throw an error if the object passed cannot be parsed', () => {
+    highland(['[' + stringifiedObj])
       .through(toJson)
       .errors(function(err, push) {
         spy(err);
         push(null, err);
       })
-      .each(fp.noop);
+      .each(() => {});
 
-    expect(spy).toHaveBeenCalledOnceWith(
-      new Error(format('Could not parse %s%s to JSON.', '[', stringifiedObj))
+    expect(spy).toHaveBeenCalledWith(
+      new Error(
+        `Could not parse [${stringifiedObj} to JSON.`,
+        '[',
+        stringifiedObj
+      )
     );
   });
 });

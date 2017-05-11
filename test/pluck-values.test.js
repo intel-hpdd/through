@@ -1,18 +1,17 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const pluckValues = require('../source/pluck-values');
-const format = require('util').format;
+import highland from 'highland';
+import pluckValues from '../source/pluck-values.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('pluck values', function() {
+describe('pluck values', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
 
-    λ([
+    highland([
       {
         make: 'kia',
         model: 'forte',
@@ -40,11 +39,8 @@ describe('pluck values', function() {
       expected: ['blue', 2015]
     }
   ].forEach(function(item) {
-    it(
-      format('should pluck the color and year from the %s entry', item.entry),
-      function() {
-        expect(spy).toHaveBeenCalledOnceWith(item.expected);
-      }
-    );
+    it(`should pluck the color and year from the ${item.entry} entry`, () => {
+      expect(spy).toHaveBeenCalledWith(item.expected);
+    });
   });
 });

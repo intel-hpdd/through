@@ -1,3 +1,5 @@
+// @flow
+
 //
 // INTEL CONFIDENTIAL
 //
@@ -19,15 +21,9 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+import * as obj from '@mfl/obj';
 
-const fp = require('intel-fp');
-import obj from '@mfl/obj';
+import { type HighlandStreamT } from 'highland';
 
-/**
- * Plucks the array of values out
- * of each object in the stream.
- */
-module.exports = fp.curry(2, function pluckValues(arr, s) {
-  return s.pick(arr).map(obj.values);
-});
+export default (arr: string[] | number[]) => (s: HighlandStreamT<Object>) =>
+  s.pick(arr).map(obj.values);

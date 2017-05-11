@@ -1,19 +1,19 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const sortBy = require('../source/sort-by');
+import highland from 'highland';
+import sortBy from '../source/sort-by.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('sort by', function() {
+describe('sort by', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
-  it('should sort', function() {
-    λ([
+  it('should sort', () => {
+    highland([
       {
         name: 'foo',
         id: 23

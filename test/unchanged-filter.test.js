@@ -1,25 +1,25 @@
-'use strict';
+// @flow
 
-const λ = require('highland');
-const unchangedFilter = require('../source/unchanged-filter');
+import highland from 'highland';
+import unchangedFilter from '../source/unchanged-filter.js';
 
-import { describe, beforeEach, it, jasmine, expect, jest } from './jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
-describe('unchanged filter', function() {
+describe('unchanged filter', () => {
   let spy;
 
-  beforeEach(function() {
+  beforeEach(() => {
     spy = jasmine.createSpy('spy');
   });
 
-  it('should filter values that are the same as the previous', function() {
-    λ([1, 8, 6, 6, 2, 8]).through(unchangedFilter).collect().each(spy);
+  it('should filter values that are the same as the previous', () => {
+    highland([1, 8, 6, 6, 2, 8]).through(unchangedFilter).collect().each(spy);
 
-    expect(spy).toHaveBeenCalledOnceWith([1, 8, 6, 2, 8]);
+    expect(spy).toHaveBeenCalledWith([1, 8, 6, 2, 8]);
   });
 
-  it('should deep compare values', function() {
-    λ([
+  it('should deep compare values', () => {
+    highland([
       {
         a: 'b',
         c: {
@@ -37,7 +37,7 @@ describe('unchanged filter', function() {
       .collect()
       .each(spy);
 
-    expect(spy).toHaveBeenCalledOnceWith([
+    expect(spy).toHaveBeenCalledWith([
       {
         a: 'b',
         c: {
