@@ -21,9 +21,7 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as obj from '@mfl/obj';
-
 import { type HighlandStreamT } from 'highland';
 
 export default (arr: string[] | number[]) => (s: HighlandStreamT<Object>) =>
-  s.pick(arr).map(obj.values);
+  s.pick(arr).map(x => Object.values(x));
