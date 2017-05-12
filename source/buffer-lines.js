@@ -24,5 +24,5 @@
 import bufferString from './buffer-string.js';
 import type { HighlandStreamT } from 'highland';
 
-export default (s: HighlandStreamT<Buffer>): HighlandStreamT<string> =>
+export default (s: HighlandStreamT<Buffer | string>): HighlandStreamT<string> =>
   s.through(bufferString).split();

@@ -7,6 +7,10 @@ import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
 describe('sort by', () => {
   let spy;
+  type NameAndId = {
+    name: string,
+    id: number
+  };
 
   beforeEach(() => {
     spy = jasmine.createSpy('spy');
@@ -27,11 +31,7 @@ describe('sort by', () => {
         id: 15
       }
     ])
-      .through(
-        sortBy(function(a, b) {
-          return a.id - b.id;
-        })
-      )
+      .through(sortBy((a, b) => a.id - b.id))
       .collect()
       .each(spy);
 

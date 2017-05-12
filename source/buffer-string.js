@@ -24,7 +24,7 @@
 import collectValues from './collect-values';
 import type { HighlandStreamT } from 'highland';
 
-export default (s: HighlandStreamT<Buffer>): HighlandStreamT<string> =>
+export default (s: HighlandStreamT<Buffer | string>): HighlandStreamT<string> =>
   s
     .map(x => x.toString('utf8'))
     .through(collectValues)

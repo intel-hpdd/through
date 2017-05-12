@@ -23,5 +23,5 @@
 
 import { type HighlandStreamT } from 'highland';
 
-export default (arr: string[] | number[]) => (s: HighlandStreamT<Object>) =>
+export default (arr: string[]) => (s: HighlandStreamT<Object>) =>
   s.pick(arr).map(x => Object.values(x));

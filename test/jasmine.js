@@ -1,5 +1,5 @@
 // @flow
 
-/*global describe beforeEach afterEach it expect jasmine spyOn jest:true*/
+/*global describe beforeEach afterEach it expect jasmine spyOn :true*/
 
-export { describe, beforeEach, afterEach, it, expect, jasmine, spyOn, jest };
+export { describe, beforeEach, afterEach, it, expect, jasmine, spyOn };

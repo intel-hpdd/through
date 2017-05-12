@@ -23,10 +23,10 @@
 
 import { default as highland, type HighlandStreamT } from 'highland';
 
-export default (s: HighlandStreamT<mixed>): HighlandStreamT<Array<*>> => {
+export default <T>(s: HighlandStreamT<T>): HighlandStreamT<Array<T>> => {
   const arr = [];
 
-  return s.consume((err: Error, x: mixed, push, next) => {
+  return s.consume((err: Error, x: T, push, next) => {
     if (err) {
       push(err);
       next();

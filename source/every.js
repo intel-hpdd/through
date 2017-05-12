@@ -23,5 +23,5 @@
 
 import { type HighlandStreamT } from 'highland';
 
-export default (s: HighlandStreamT<mixed>): HighlandStreamT<mixed> =>
+export default <T>(s: HighlandStreamT<T>): HighlandStreamT<T> =>
   s.reduce1((a, b) => a && b);
