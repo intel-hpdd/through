@@ -23,6 +23,9 @@
 
 import { type HighlandStreamT } from 'highland';
 
-export default (cmp: <T2>(a: T2, b: T2) => number) => <T>(
+type Cmp<T> = (T, T) => number;
+type StreamToStream<T> = HighlandStreamT<T> => HighlandStreamT<T>;
+
+export default <T>(cmp: Cmp<T>): StreamToStream<T> => (
   s: HighlandStreamT<T>
-): HighlandStreamT<T> => s.collect().map(x => x.sort(cmp)).sequence();
+): HighlandStreamT<T> => s.collect().map(xs => xs.sort(cmp)).sequence();

@@ -7,10 +7,6 @@ import { describe, beforeEach, it, jasmine, expect } from './jasmine.js';
 
 describe('sort by', () => {
   let spy;
-  type NameAndId = {
-    name: string,
-    id: number
-  };
 
   beforeEach(() => {
     spy = jasmine.createSpy('spy');

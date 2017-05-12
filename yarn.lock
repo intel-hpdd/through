@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@mfl/flow-highland@4.2.5":
-  version "4.2.5"
-  resolved "https://registry.yarnpkg.com/@mfl/flow-highland/-/flow-highland-4.2.5.tgz#4b9d952c4c5910a46de0456faddc32a299cd55cd"
+"@mfl/flow-highland@4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@mfl/flow-highland/-/flow-highland-4.2.6.tgz#874d6195057cc7746abc65414fc04b1362d98536"
 
 "@mfl/flow-jasmine@1.6.1":
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@mfl/flow-jasmine/-/flow-jasmine-1.6.1.tgz#ddf955193823af50f2180fc613e81cf7fbde2043"
 
-"@mfl/fp@8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@mfl/fp/-/fp-8.0.1.tgz#7b4b718551b02b3307639f1c9dd01c12a6de36ec"
+"@mfl/fp@8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@mfl/fp/-/fp-8.0.2.tgz#6132e40ecdd741ef3ca4db450677890955623a04"
   dependencies:
     "@mfl/maybe" "3.0.0"
 
@@ -894,19 +894,13 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
-cross-spawn-async@^2.0.0:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/cross-spawn-async/-/cross-spawn-async-2.2.5.tgz#845ff0c0834a3ded9d160daca6d390906bb288cc"
+cross-spawn@^5.0.1:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
   dependencies:
-    lru-cache "^4.0.0"
-    which "^1.2.8"
-
-cross-spawn@2.0.x:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-2.0.1.tgz#ab6fd893a099759d9b85220e3a64397de946b0f6"
-  dependencies:
-    cross-spawn-async "^2.0.0"
-    spawn-sync "1.0.13"
+    lru-cache "^4.0.1"
+    shebang-command "^1.2.0"
+    which "^1.2.9"
 
 cryptiles@2.x.x:
   version "2.0.5"
@@ -1591,12 +1585,6 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
-is-absolute@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/is-absolute/-/is-absolute-0.1.7.tgz#847491119fccb5fb436217cc737f7faad50f603f"
-  dependencies:
-    is-relative "^0.1.0"
-
 is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
@@ -1699,10 +1687,6 @@ is-primitive@^2.0.0:
 is-property@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-property/-/is-property-1.0.2.tgz#57fe1c4e48474edd65b09911f26b1cd4095dda84"
-
-is-relative@^0.1.0:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/is-relative/-/is-relative-0.1.3.tgz#905fee8ae86f45b3ec614bc3c15c869df0876e82"
 
 is-resolvable@^1.0.0:
   version "1.0.0"
@@ -2180,7 +2164,7 @@ loose-envify@^1.0.0:
   dependencies:
     js-tokens "^3.0.0"
 
-lru-cache@^4.0.0:
+lru-cache@^4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.0.2.tgz#1d17679c069cda5d040991a09dbc2c0db377e55e"
   dependencies:
@@ -2455,12 +2439,13 @@ pluralize@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
 
-pre-commit@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/pre-commit/-/pre-commit-1.1.2.tgz#6cc01c9cfa01ccbdeb06810d842bb200c4547926"
+pre-commit@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/pre-commit/-/pre-commit-1.2.2.tgz#dbcee0ee9de7235e57f79c56d7ce94641a69eec6"
   dependencies:
-    cross-spawn "2.0.x"
-    which "1.1.x"
+    cross-spawn "^5.0.1"
+    spawn-sync "^1.0.15"
+    which "1.2.x"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -2750,6 +2735,16 @@ set-blocking@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
 
+shebang-command@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
+  dependencies:
+    shebang-regex "^1.0.0"
+
+shebang-regex@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
+
 shelljs@^0.7.5:
   version "0.7.7"
   resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.7.7.tgz#b2f5c77ef97148f4b4f6e22682e10bba8667cff1"
@@ -2798,9 +2793,9 @@ source-map@~0.2.0:
   dependencies:
     amdefine ">=0.0.4"
 
-spawn-sync@1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/spawn-sync/-/spawn-sync-1.0.13.tgz#904091b9ad48a0f3afb0e84752154c01e82fd8d8"
+spawn-sync@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/spawn-sync/-/spawn-sync-1.0.15.tgz#b00799557eb7fb0c8376c29d44e8a1ea67e57476"
   dependencies:
     concat-stream "^1.4.7"
     os-shim "^0.1.2"
@@ -3057,13 +3052,7 @@ which-module@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/which-module/-/which-module-1.0.0.tgz#bba63ca861948994ff307736089e3b96026c2a4f"
 
-which@1.1.x:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/which/-/which-1.1.2.tgz#486c48af6dfecc7a7dcf9c655acf108d2dcbdf3d"
-  dependencies:
-    is-absolute "^0.1.7"
-
-which@^1.2.12, which@^1.2.8:
+which@1.2.x, which@^1.2.12, which@^1.2.9:
   version "1.2.14"
   resolved "https://registry.yarnpkg.com/which/-/which-1.2.14.tgz#9a87c4378f03e827cecaf1acdf56c736c01c14e5"
   dependencies:
