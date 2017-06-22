@@ -26,14 +26,14 @@
     "intel-dirp": "1.0.5",
     "intel-fp": "1.0.15",
     "intel-obj": "1.0.5",
-    "highland": "2.5.1",
-    "lodash.isequal": "3.0.4"
+    "highland": "2.10.5",
+    "lodash.isequal": "4.5.0"
   },
   "devDependencies": {
-    "jscs": "2.5.1",
-    "jshint": "2.8.0",
-    "pre-commit": "1.1.2",
-    "jasmine": "2.3.2",
+    "jscs": "3.0.7",
+    "jshint": "2.9.4",
+    "pre-commit": "1.2.2",
+    "jasmine": "2.6.0",
     "jasmine-n-matchers": "2.0.2",
     "krusty-jasmine-reporter": "1.0.0"
   }
